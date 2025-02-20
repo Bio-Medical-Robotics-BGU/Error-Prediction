@@ -9,3 +9,7 @@ The code is split into several folders based on purpose:
 Kinematic Segment Codes - the codes that create the kinematic segments and label them based on the labeled videos (using the vectors created for the video samples). The results are visualized and the overlap and advance parameters are set.
 
 Create Datasets Codes - the codes that split the kinematic segments into train, validation and test sets using and 60-20-20 split. The training data can be "augmented" by increasing the overlap.
+
+Neural Network - the code for the LSTM network.
+
+LOUO - all the codes for testing the network with the leave one user out paradigm. This includes creating the datasets and the loop of the LSTM network.
