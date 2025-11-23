@@ -113,14 +113,14 @@ for j in range(0, 3):
     
     Input1 = Input(shape=(TrainKinematics.shape[1], TrainKinematics.shape[2]))
     x1 = Bidirectional(LSTM(lstm1, activation='tanh', return_sequences=True,
-                            dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg), bias_regularizer=l2(reg)))(Input1)
+                            dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg)))(Input1)
     
     x2 = BatchNormalization(axis=-1, momentum=0.99,
                             epsilon=0.001, center=True, scale=True)(x1)
     
     
     x3 = Bidirectional(LSTM(lstm2, activation='tanh', return_sequences=False,
-                            dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg), bias_regularizer=l2(reg)))(x2)
+                            dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg)))(x2)
     
     
     out = Dense(1, activation='sigmoid')(x3)
@@ -198,3 +198,4 @@ std_tnr = np.std(AllTNRs, ddof = 1)
 print(f'Accuracy: {round(mean_acc, 2)}, {round(std_acc, 2)}')
 print(f'TPR: {round(mean_tpr, 2)}, {round(std_tpr, 2)}')
 print(f'TNR: {round(mean_tnr, 2)}, {round(std_tnr, 2)}')
+
