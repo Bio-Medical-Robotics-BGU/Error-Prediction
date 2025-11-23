@@ -64,14 +64,14 @@ K.clear_session()
 
 Input1 = Input(shape=(TrainKinematics.shape[1], TrainKinematics.shape[2]))
 x1 = Bidirectional(LSTM(lstm1, activation='tanh', return_sequences=True,
-                        dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg), bias_regularizer=l2(reg)))(Input1)
+                        dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg)))(Input1)
 
 x2 = BatchNormalization(axis=-1, momentum=0.99,
                         epsilon=0.001, center=True, scale=True)(x1)
 
 
 x3 = Bidirectional(LSTM(lstm2, activation='tanh', return_sequences=False,
-                        dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg), bias_regularizer=l2(reg)))(x2)
+                        dropout=do, recurrent_dropout=rdo, kernel_regularizer=l2(reg)))(x2)
 
 
 out = Dense(1, activation='sigmoid')(x3)
@@ -133,3 +133,4 @@ plt.show()
 os.chdir(project)
 
 model.save_weights('Weights_BiLstm_128_64_do0.2rcdo0.0_reg0.001_PSM_lr0.0001_bs128_cw2_e100.weights.h5')
+
