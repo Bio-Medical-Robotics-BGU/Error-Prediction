@@ -11,11 +11,6 @@ import sklearn.metrics as sk
 from sklearn.metrics import roc_auc_score
 
 
-import optuna
-from optuna.integration import TFKerasPruningCallback
-
-
-
 import os
 import numpy as np
 import scipy.io
@@ -257,3 +252,4 @@ print(f'Accuracy: {round(mean_acc, 2)}, {round(std_acc, 3)}')
 print(f'TPR: {round(mean_tpr, 2)}, {round(std_tpr, 3)}')
 print(f'TNR: {round(mean_tnr, 2)}, {round(std_tnr, 3)}')
 print(f'AUC: {round(mean_auc, 2)}, {round(std_auc, 3)}')
+
