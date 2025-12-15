@@ -93,27 +93,6 @@ AllAUCs = np.zeros((5, 1))
 for j in range(0, 5):
     
     
-    #################################################################
-    #for training on the smaller sized dataset (equal to that of A=25)
-    # Tr0 = 2656
-    # Tr1 = 1254
-
-    # all1 = np.flatnonzero(TrainLabels == 1)
-    # all0 = np.flatnonzero(TrainLabels == 0)
-     
-    # inds1 = np.random.choice(all1, Tr1, replace = False)
-    # inds0 = np.random.choice(all0, Tr0, replace = False)
-
-    # TrainKinematics1 = TrainKinematics[inds1, :, :]
-    # TrainLabels1 = TrainLabels[inds1]
-    
-    # TrainKinematics0 = TrainKinematics[inds0, :, :]
-    # TrainLabels0 = TrainLabels[inds0]
-
-    # TrainKinematicsT = np.concatenate((TrainKinematics1, TrainKinematics0), axis = 0)
-    # TrainLabelsT = np.concatenate((TrainLabels1, TrainLabels0), axis = 0)
-    
-    #################################################################
     
     K.clear_session()
     
@@ -223,3 +202,4 @@ print(f'Accuracy: {round(mean_acc, 2)}, {round(std_acc, 3)}')
 print(f'TPR: {round(mean_tpr, 2)}, {round(std_tpr, 3)}')
 print(f'TNR: {round(mean_tnr, 2)}, {round(std_tnr, 3)}')
 print(f'AUC: {round(mean_auc, 2)}, {round(std_auc, 3)}')
+
