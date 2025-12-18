@@ -136,7 +136,7 @@ for j in range(0, 3):
     history = model.fit(TrainKinematics, TrainLabels,
                         validation_data=(TestKinematics, TestLabels),
                         batch_size=128, 
-                        shuffle=True, epochs=100, verbose=1, class_weight=class_weight)
+                        shuffle=True, epochs=50, verbose=1, class_weight=class_weight)
     
     history = history.history
     
@@ -198,4 +198,5 @@ std_tnr = np.std(AllTNRs, ddof = 1)
 print(f'Accuracy: {round(mean_acc, 2)}, {round(std_acc, 2)}')
 print(f'TPR: {round(mean_tpr, 2)}, {round(std_tpr, 2)}')
 print(f'TNR: {round(mean_tnr, 2)}, {round(std_tnr, 2)}')
+
 
