@@ -219,49 +219,8 @@ AllTrainSignalsStandardized = cat(3, AllTrainSignalsStandardized, angvel_stand);
 % Orientation
 orientations = TrainKinematics(:, :, Inds(17):Inds(20));
 
-or1_min = min(orientations(:, :, 1), [], 'all');
-or1_max = max(orientations(:, :, 1), [], 'all');
-
-or2_min = min(orientations(:, :, 2), [], 'all');
-or2_max = max(orientations(:, :, 2), [], 'all');
-
-or3_min = min(orientations(:, :, 3), [], 'all');
-or3_max = max(orientations(:, :, 3), [], 'all');
-
-or4_min = min(orientations(:, :, 4), [], 'all');
-or4_max = max(orientations(:, :, 4), [], 'all');
-
-
-or1_mean = mean(orientations(:, :, 1), 'all');
-or1_std = std(orientations(:, :, 1), 0, 'all');
-
-or2_mean = mean(orientations(:, :, 2), 'all');
-or2_std = std(orientations(:, :, 2), 0, 'all');
-
-or3_mean = mean(orientations(:, :, 3), 'all');
-or3_std = std(orientations(:, :, 3), 0, 'all');
-
-or4_mean = mean(orientations(:, :, 4), 'all');
-or4_std = std(orientations(:, :, 4), 0, 'all');
-
-or1_norm = (orientations(:, :, 1) - or1_min) / (or1_max - or1_min);
-or2_norm = (orientations(:, :, 2) - or2_min) / (or2_max - or2_min);
-or3_norm = (orientations(:, :, 3) - or3_min) / (or3_max - or3_min);
-or4_norm = (orientations(:, :, 4) - or4_min) / (or4_max - or4_min);
-or_norm = cat(3, or1_norm, or2_norm, or3_norm, or4_norm);
-assert(min(or_norm, [], "all") == 0)
-assert(max(or_norm, [], "all") == 1)
-
-or1_stand = (orientations(:, :, 1) - or1_mean) / or1_std;
-or2_stand = (orientations(:, :, 2) - or2_mean) / or2_std;
-or3_stand = (orientations(:, :, 3) - or3_mean) / or3_std;
-or4_stand = (orientations(:, :, 4) - or4_mean) / or4_std;
-or_stand = cat(3, or1_stand, or2_stand, or3_stand, or4_stand);
-assert(mean(or_stand, "all") - 0 < 1e-10)
-assert(std(or_stand, 0, "all") - 1 < 1e-10)
-
-AllTrainSignalsNormalized = cat(3, AllTrainSignalsNormalized, or_norm);
-AllTrainSignalsStandardized = cat(3, AllTrainSignalsStandardized, or_stand);
+AllTrainSignalsNormalized = cat(3, AllTrainSignalsNormalized, orientations);
+AllTrainSignalsStandardized = cat(3, AllTrainSignalsStandardized, orientations);
 
 % Jaw
 jaw = TrainKinematics(:, :, Inds(16));
@@ -366,20 +325,9 @@ AllValSignalsStandardized = cat(3, AllValSignalsStandardized, angvel_stand);
 % Orientation
 orientations = ValKinematics(:, :, Inds(17):Inds(20));
 
-or1_norm = (orientations(:, :, 1) - or1_min) / (or1_max - or1_min);
-or2_norm = (orientations(:, :, 2) - or2_min) / (or2_max - or2_min);
-or3_norm = (orientations(:, :, 3) - or3_min) / (or3_max - or3_min);
-or4_norm = (orientations(:, :, 4) - or4_min) / (or4_max - or4_min);
-or_norm = cat(3, or1_norm, or2_norm, or3_norm, or4_norm);
 
-or1_stand = (orientations(:, :, 1) - or1_mean) / or1_std;
-or2_stand = (orientations(:, :, 2) - or2_mean) / or2_std;
-or3_stand = (orientations(:, :, 3) - or3_mean) / or3_std;
-or4_stand = (orientations(:, :, 4) - or4_mean) / or4_std;
-or_stand = cat(3, or1_stand, or2_stand, or3_stand, or4_stand);
-
-AllValSignalsNormalized = cat(3, AllValSignalsNormalized, or_norm);
-AllValSignalsStandardized = cat(3, AllValSignalsStandardized, or_stand);
+AllValSignalsNormalized = cat(3, AllValSignalsNormalized, orientations);
+AllValSignalsStandardized = cat(3, AllValSignalsStandardized, orientations);
 
 % Jaw
 jaw = ValKinematics(:, :, Inds(16));
@@ -471,20 +419,8 @@ AllTestSignalsStandardized = cat(3, AllTestSignalsStandardized, angvel_stand);
 % Orientation
 orientations = TestKinematics(:, :, Inds(17):Inds(20));
 
-or1_norm = (orientations(:, :, 1) - or1_min) / (or1_max - or1_min);
-or2_norm = (orientations(:, :, 2) - or2_min) / (or2_max - or2_min);
-or3_norm = (orientations(:, :, 3) - or3_min) / (or3_max - or3_min);
-or4_norm = (orientations(:, :, 4) - or4_min) / (or4_max - or4_min);
-or_norm = cat(3, or1_norm, or2_norm, or3_norm, or4_norm);
-
-or1_stand = (orientations(:, :, 1) - or1_mean) / or1_std;
-or2_stand = (orientations(:, :, 2) - or2_mean) / or2_std;
-or3_stand = (orientations(:, :, 3) - or3_mean) / or3_std;
-or4_stand = (orientations(:, :, 4) - or4_mean) / or4_std;
-or_stand = cat(3, or1_stand, or2_stand, or3_stand, or4_stand);
-
-AllTestSignalsNormalized = cat(3, AllTestSignalsNormalized, or_norm);
-AllTestSignalsStandardized = cat(3, AllTestSignalsStandardized, or_stand);
+AllTestSignalsNormalized = cat(3, AllTestSignalsNormalized, orientations);
+AllTestSignalsStandardized = cat(3, AllTestSignalsStandardized, orientations);
 
 % Jaw
 jaw = TestKinematics(:, :, Inds(16));
@@ -633,4 +569,5 @@ VErr/Err
 VNot/Not
 
 TeErr/Err
+
 TeNot/Not
